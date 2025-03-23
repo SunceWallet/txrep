@@ -1,13 +1,14 @@
 import {
   Asset,
   FeeBumpTransaction,
+  LiquidityPoolAsset,
   Memo,
   Operation,
   Signer,
   StrKey,
   Transaction,
   xdr
-} from 'stellar-sdk';
+} from '@stellar/stellar-sdk';
 
 import BigNumber from 'bignumber.js';
 import { best_r, upperSnakeCase } from './utils';
@@ -339,7 +340,13 @@ function addSignature(
   addLine(`${prefix}.signature`, toOpaque(signature.signature()), lines);
 }
 
-function toAsset(asset: Asset) {
+function toAsset(assetOrPool: Asset | LiquidityPoolAsset) {
+  let asset
+  if (!!(assetOrPool as LiquidityPoolAsset).assetA) {
+    asset = (assetOrPool as LiquidityPoolAsset).assetA
+  } else {
+    asset = assetOrPool
+  }
   if (asset.isNative()) {
     return 'XLM';
   }

@@ -1,6 +1,6 @@
 // tslint:disable:no-expression-statement
 import test from 'ava';
-import { Networks } from 'stellar-sdk';
+import { Networks } from '@stellar/stellar-sdk';
 import { parseLine, toTransaction } from './txrepToTx';
 
 import { readFileSync } from 'fs';

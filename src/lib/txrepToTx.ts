@@ -10,7 +10,7 @@ import {
   Transaction,
   TransactionBuilder,
   xdr
-} from 'stellar-sdk';
+} from '@stellar/stellar-sdk';
 
 import BigNumber from 'bignumber.js';
 import { set } from './utils';
@@ -395,7 +395,7 @@ function toAllowTrust(op: AllowTrustOp, source: string) {
   const { trustor, asset, authorize } = op;
   return Operation.allowTrust({
     trustor,
-    authorize: toBoolInt(authorize),
+    authorize: Boolean(authorize),
     assetCode: asset,
     source
   });
@@ -493,12 +493,4 @@ function toPrice({ n, d }: { n: string; d: string }) {
     n: Number(n),
     d: Number(d)
   };
-}
-
-function toBoolInt(v: boolean | number): number {
-  if (v === null || v === undefined) {
-    return 0;
-  }
-
-  return Number(v);
 }

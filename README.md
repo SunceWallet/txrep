@@ -21,7 +21,7 @@ yarn add @stellarguard/txrep
 
 ```js
 import { toTxrep } from '@stellarguard/txrep';
-import { Transaction, Networks } from 'stellar-sdk';
+import { Transaction, Networks } from '@stellar/stellar-sdk';
 
 const xdr = 'AAAAACsWS5BDhC5BjpKQtznHFJ3CkU6+XtWopW+t+Q9KoH7QAAAAZAClKY0AAAABAAAAAQAAAABbicmAAAAAAF1q/QAAAAABAAAAFkVuam95IHRoaXMgdHJhbnNhY3Rpb24AAAAAAAEAAAAAAAAAAQAAAABAXzbt2M8i77+AcrmFtqTAFVHDTdOME3rI1A1ALNH3tAAAAAFVU0QAAAAAADJSVDIhkp9uz61Ra68rs3ScZIIgjT8ajX8Kkdc1be0LAAAAABfXk6AAAAAAAAAAAUqgftAAAABA3vtPH60cJ5MntVrxhP3N33P096jLQOflNKcdc6BRJLo2nbem0xtHyv0RhZIkaoV15sJJq5TsN2je22KSIhzlDA=='
 const tx = new Transaction(xdr, Networks.TESTNET);
@@ -34,7 +34,7 @@ const txrep = toTxrep(tx);
 
 ```js
 import { toTransaction } from '@stellarguard/txrep';
-import { Networks } from 'stellar-sdk';
+import { Networks } from '@stellar/stellar-sdk';
 
 const txrep = `
 tx.sourceAccount: GAVRMS4QIOCC4QMOSKILOOOHCSO4FEKOXZPNLKFFN6W7SD2KUB7NBPLN

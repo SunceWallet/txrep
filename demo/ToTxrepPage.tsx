@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { TextField, Typography, withStyles } from '@material-ui/core';
-import { Networks, Transaction } from 'stellar-sdk';
+import { Networks, Transaction } from '@stellar/stellar-sdk';
 
 import {
   toTxrep
