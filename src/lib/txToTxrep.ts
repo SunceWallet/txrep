@@ -1,7 +1,6 @@
 import {
   Asset,
   FeeBumpTransaction,
-  LiquidityPoolAsset,
   Memo,
   Operation,
   Signer,
@@ -271,7 +270,7 @@ function addChangeTrustOp(
   operation: Operation.ChangeTrust,
   addBodyLine: LineAdder
 ) {
-  addBodyLine('line', toAsset(operation.line));
+  addBodyLine('line', toAsset(operation.line as Asset)); // TODO: resolve the situation when here is a LiquidityPoolAsset
   if (operation.limit) {
     addBodyLine('limit', toAmount(operation.limit));
   }
@@ -340,13 +339,7 @@ function addSignature(
   addLine(`${prefix}.signature`, toOpaque(signature.signature()), lines);
 }
 
-function toAsset(assetOrPool: Asset | LiquidityPoolAsset) {
-  let asset
-  if (!!(assetOrPool as LiquidityPoolAsset).assetA) {
-    asset = (assetOrPool as LiquidityPoolAsset).assetA
-  } else {
-    asset = assetOrPool
-  }
+function toAsset(asset: Asset) {
   if (asset.isNative()) {
     return 'XLM';
   }
