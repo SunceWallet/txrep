@@ -22,7 +22,7 @@ export function toTransaction(
   const obj: any = toObj(txrep);
   const account = new Account(obj.tx.sourceAccount, obj.tx.seqNum);
   // hack - build() will increment the sequence number so we have to decrement it first
-  (account as any).sequence = (account as any).sequence.add(-1);
+  (account as any).sequence = (account as any).sequence.plus(-1);
   const opts = {
     memo: toMemo(obj.tx.memo),
     fee: toFee(obj.tx.fee),
